@@ -127,6 +127,38 @@ var createTestCase = function (platform, pingExecution) {
     });
 };
 
+describe('ping verify reply address', function () {
+    describe('on linux platform', function() {
+        beforeEach(function() {
+            this.platformStub = sinon.stub(os, 'platform').callsFake(function() {
+                return 'linux';
+            });
+            const fixturePath = path.join(__dirname, 'fixture', 'linux', 'en', 'sample4.txt');
+            this.spawnStub = sinon.stub(cp, 'spawn').callsFake(mockOutSpawn(fixturePath));
+        });
+
+        afterEach(function() {
+            this.platformStub.restore();
+            this.spawnStub.restore();
+        });
+
+        it('host is not considered alive if verifyReplyAddress is true', async function() {
+            const res = await ping.promise
+                .probe('whatever', {
+                    verifyReplyAddress: true,
+                });
+            expect(res.alive).to.be.false;
+        });
+        it('host is considered alive if verifyReplyAddress is false', async function() {
+            const res = await ping.promise
+                .probe('whatever', {
+                    verifyReplyAddress: false,
+                });
+            expect(res.alive).to.be.true;
+        });
+    });
+});
+
 describe('ping timeout and deadline options', function () {
     describe('on linux platform', function () {
         beforeEach(function () {
