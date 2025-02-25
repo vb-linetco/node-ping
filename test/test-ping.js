@@ -149,6 +149,7 @@ describe('ping verify reply address', function () {
                 });
             expect(res.alive).to.be.false;
         });
+
         it('host is considered alive if verifyReplyAddress is false', async function() {
             const res = await ping.promise
                 .probe('whatever', {
