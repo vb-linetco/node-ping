@@ -91,7 +91,7 @@
     "packetLoss": "100.000",
     "stddev": "unknown"
   },
-  "linux_en_sample4": {
+  "linux_en_sample_reply_from_different_address": {
     "inputHost": "whatever",
     "host": "192.168.178.1",
     "numeric_host": "192.168.178.1",

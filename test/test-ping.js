@@ -127,13 +127,13 @@ var createTestCase = function (platform, pingExecution) {
     });
 };
 
-describe('ping verify reply address', function () {
+describe('ping reply from a different address', function () {
     describe('on linux platform', function() {
         beforeEach(function() {
             this.platformStub = sinon.stub(os, 'platform').callsFake(function() {
                 return 'linux';
             });
-            const fixturePath = path.join(__dirname, 'fixture', 'linux', 'en', 'sample4.txt');
+            const fixturePath = path.join(__dirname, 'fixture', 'linux', 'en', 'sample_reply_from_different_address.txt');
             this.spawnStub = sinon.stub(cp, 'spawn').callsFake(mockOutSpawn(fixturePath));
         });
 
