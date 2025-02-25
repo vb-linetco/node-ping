@@ -135,7 +135,7 @@ Below is the possible configuration
  *                                          Default: Linux: false
  *                                          Other platforms do not need this option.
  * If set to true and a reply is received from an address which does not match the parsed
- * `PingResponse.numeric_host` then the timing information is discarded.
+ * `PingResponse.numeric_host`, the ping response is ignored.
  * This helps against detecting a host as alive by accident when another host replies to the ping.
  * This is a workaround of an imperfection in the ping implementation in `iputils`.
  * @property {string[]} extra - Optional options does not provided
